@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Brain, Eye, Zap, Shield, TrendingUp, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function InterpretableDLHome() {
   const [scrollY, setScrollY] = useState(0);
@@ -40,15 +41,15 @@ export default function InterpretableDLHome() {
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div 
+          <div
             className="absolute w-96 h-96 bg-white/10 rounded-full blur-3xl -top-48 -left-48"
             style={{ transform: `translate(${scrollY * 0.1}px, ${scrollY * 0.1}px)` }}
           />
-          <div 
+          <div
             className="absolute w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl top-1/2 -right-48"
             style={{ transform: `translate(${-scrollY * 0.15}px, ${scrollY * 0.05}px)` }}
           />
-          <div 
+          <div
             className="absolute w-72 h-72 bg-blue-400/20 rounded-full blur-3xl bottom-0 left-1/3"
             style={{ transform: `translate(${scrollY * 0.08}px, ${-scrollY * 0.08}px)` }}
           />
@@ -60,27 +61,36 @@ export default function InterpretableDLHome() {
             <Brain className="w-6 h-6 text-white" />
             <span className="text-white font-medium">Explainable AI Research</span>
           </div>
-          
+
           <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-tight animate-slideUp">
             Interpretable Deep Learning
             <span className="block mt-2 bg-linear-to-r from-cyan-200 to-white bg-clip-text text-transparent">
               for Image Classification
             </span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-light animate-slideUp" style={{ animationDelay: '0.2s' }}>
             Unveiling the black box with Grad-CAM and SHAP — Making AI decisions transparent, trustworthy, and explainable
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slideUp" style={{ animationDelay: '0.4s' }}>
+
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center animate-slideUp"
+            style={{ animationDelay: '0.4s' }}
+          >
             <button className="group bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
               Explore Research
               <ChevronDown className="inline-block ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
             </button>
-            <button className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 hover:scale-105 transition-all duration-300">
-              View Demo
-            </button>
+
+            <Link
+              to="/classification"
+              className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 px-8 py-4 rounded-full font-semibold text-lg 
+              hover:bg-white/20 hover:scale-105 transition-all duration-300 inline-block"
+            >
+              Start Classification →
+            </Link>
           </div>
+
         </div>
 
         {/* Scroll Indicator */}
@@ -222,7 +232,7 @@ export default function InterpretableDLHome() {
             backgroundSize: '50px 50px'
           }} />
         </div>
-        
+
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Explore Explainable AI?
@@ -236,31 +246,7 @@ export default function InterpretableDLHome() {
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fadeIn {
-          animation: fadeIn 1s ease-out;
-        }
-        
-        .animate-slideUp {
-          animation: slideUp 1s ease-out;
-        }
-      `}</style>
+      
     </div>
   );
 }

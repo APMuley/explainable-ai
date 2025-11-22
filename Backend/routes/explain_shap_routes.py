@@ -23,13 +23,13 @@ gradcam_shap_bp = Blueprint("gradcam_shap_bp", __name__)
 # ------------- CONFIG -------------
 MODEL_FILES = {
     "dog_cat": {
-        "h5": r'B:\CodingStuffs\XAI_Project\Backend\models\dog_cat\dogcat.h5',
+        "h5": "/Users/ashishmuley/Desktop/major_project/Major_Project/Backend/models/dog_cat/dogcat.h5",
         "img_size": (128, 128),
         "last_conv": "conv2d_4",
         "class_names": ["Cat", "Dog"]
     },
     "tb": {
-        "h5": r'B:\CodingStuffs\XAI_Project\Backend\models\tb\tb.h5',
+        "h5": "/Users/ashishmuley/Desktop/major_project/Major_Project/Backend/models/tb/tb.h5",
         "img_size": (224, 224),
         "last_conv": "conv2d_5",
         "class_names": ["Normal", "Tuberculosis"]

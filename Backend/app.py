@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 
@@ -9,6 +10,7 @@ from routes.dogcat_routes import dogcat_bp
 from routes.tb_routes import tb_bp
 # from routes.explain_routes import explain_bp 
 from routes.explain_shap_routes import gradcam_shap_bp
+from routes.report_generator import report_bp
 
 
 def create_app():
@@ -19,11 +21,14 @@ def create_app():
     app.register_blueprint(tb_bp, url_prefix="/api/predict/tb")
     # app.register_blueprint(explain_bp, url_prefix="/api")
     app.register_blueprint(gradcam_shap_bp,url_prefix="/api")
+    app.register_blueprint(report_bp, url_prefix="/api/generate_report")
 
     return app
 
 
 app = create_app()
+
+CORS(app)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

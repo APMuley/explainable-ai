@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Model Explainability Report</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        h1, h2, h3 {
+            color: #111;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-top: 35px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .img-container {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        img {
+            max-width: 65%;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        .metrics-box {
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            margin-top: 12px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            font-size: 14px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Highlight boxes */
+        .explanation-box {
+            background: #f4f9ff;
+            padding: 15px;
+            border-left: 4px solid #0077cc;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Model Explainability Report</h1>
+    <p style="text-align:center; font-size:14px;">Generated at: {{ generated_at }}</p>
+
+    <!-- =============== MODEL SUMMARY =============== -->
+    <div class="section">
+        <h2>1. Model Summary</h2>
+        <p><strong>Model Key:</strong> {{ model_key }}</p>
+        <p><strong>Model Name:</strong> {{ model_name }}</p>
+        <p><strong>Prediction:</strong> {{ prediction }}</p>
+        <p><strong>Confidence:</strong> {{ confidence }}</p>
+
+        <div class="img-container">
+            <h3>Input Image</h3>
+            <img src="{{ input_image }}" alt="Input Image" />
+        </div>
+    </div>
+
+    <!-- =============== GRAD-CAM =============== -->
+    <div class="section">
+        <h2>2. Grad-CAM Visualization</h2>
+
+        <div class="img-container">
+            <img src="{{ gradcam_image }}" alt="Grad-CAM Overlay" />
+        </div>
+
+        <div class="explanation-box">
+            {{ gradcam_text }}
+        </div>
+    </div>
+
+    <!-- =============== SHAP =============== -->
+    <div class="section">
+        <h2>3. SHAP Attribution Visualization</h2>
+
+        <div class="img-container">
+            <img src="{{ shap_image }}" alt="SHAP Overlay" />
+        </div>
+
+        <div class="explanation-box">
+            {{ shap_text }}
+        </div>
+    </div>
+
+    <!-- =============== COMPARISON =============== -->
+    <div class="section">
+        <h2>4. Grad-CAM vs SHAP Comparison</h2>
+
+        <div class="explanation-box">
+            {{ comparison_text }}
+        </div>
+    </div>
+
+    <!-- =============== METRICS SECTION =============== -->
+    <div class="section">
+        <h2>5. Fidelity Metrics</h2>
+        <div class="metrics-box">
+            {{ fidelity_text }}
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>6. Robustness Metrics</h2>
+        <div class="metrics-box">
+            {{ robustness_text }}
+        </div>
+    </div>
+
+    <!-- =============== COMBINED INTERPRETATION =============== -->
+    <div class="section">
+        <h2>7. Combined Interpretation Summary</h2>
+        <div class="explanation-box">
+            {{ interpretation_text }}
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        Explainability Report • Auto-generated using LLM + XAI Pipeline
+    </div>
+
+</body>
+
+</html>

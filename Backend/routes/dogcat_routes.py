@@ -9,7 +9,7 @@ from tensorflow import keras
 dogcat_bp = Blueprint("dogcat", __name__)
 
 # ---------- CONFIG: point to your .h5 file ----------
-DOGCAT_H5_PATH = os.path.join("models", "dog_cat", "dogcat.h5")
+DOGCAT_H5_PATH = "/Users/ashishmuley/Desktop/major_project/Major_Project/Backend/models/dog_cat/dogcat.h5"
 # If your .h5 is somewhere else, update DOGCAT_H5_PATH accordingly.
 # Example from your environment: B:\CodingStuffs\XAI_Project\Backend\models\dogcat\reconstructed.h5
 

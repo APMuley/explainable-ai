@@ -9,7 +9,7 @@ const Header = () => {
   const navigation = [
     { name: "Home", href: "/", icon: Home },
     { name: "Model Testing", href: "classification", icon: Upload },
-    
+    { name: "Performance", href: "performance", icon: Info}
   ];
 
   const handleNavClose = () => setIsOpen(false);
