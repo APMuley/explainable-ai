@@ -23,13 +23,13 @@ gradcam_shap_bp = Blueprint("gradcam_shap_bp", __name__)
 # ------------- CONFIG -------------
 MODEL_FILES = {
     "dog_cat": {
-        "h5": "/Users/ashishmuley/Desktop/major_project/Major_Project/Backend/models/dog_cat/dogcat.h5",
+        "h5": r"B:\Major-Project\explainable-ai\Backend\models\dog_cat\dogcat.h5",
         "img_size": (128, 128),
         "last_conv": "conv2d_4",
         "class_names": ["Cat", "Dog"]
     },
     "tb": {
-        "h5": "/Users/ashishmuley/Desktop/major_project/Major_Project/Backend/models/tb/tb.h5",
+        "h5": r"B:\Major-Project\explainable-ai\Backend\models\tb\tb.h5",
         "img_size": (224, 224),
         "last_conv": "conv2d_5",
         "class_names": ["Normal", "Tuberculosis"]
@@ -52,7 +52,7 @@ _SHAP_EXPLAINERS = {}
 _CLEANUP_REGISTRY = []  # List of (filepath, deletion_time)
 _CLEANUP_LOCK = threading.Lock()
 
-def schedule_file_deletion(filepath, delay_seconds=60):
+def schedule_file_deletion(filepath, delay_seconds=120):
     """
     Schedule a file for deletion after delay_seconds.
     """
@@ -109,7 +109,7 @@ def load_model_h5(key):
     _LOADED_MODELS[key] = model
     return model
 
-def save_rgb_image_and_url(rgb_img, out_dir, prefix="out", auto_delete=True, delete_after=60):
+def save_rgb_image_and_url(rgb_img, out_dir, prefix="out", auto_delete=True, delete_after=120):
     """
     Save RGB image to disk and return URL path.
     

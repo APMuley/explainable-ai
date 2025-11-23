@@ -23,7 +23,7 @@ export async function predictModel(dataUrl, modelKey) {
   const fd = new FormData();
   const blob = dataUrlToBlob(dataUrl);
   // send both file blob (for request.files) and base64 (for fallback)
-  fd.append("image", blob, "upload.png");
+  fd.append("image", blob);
   fd.append("image_b64", dataUrl);
   const endpoint = modelKey === "dog-cat" ? "/api/predict/dogcat/" : "/api/predict/tb/";
   const res = await client.post(endpoint, fd, {
@@ -35,7 +35,7 @@ export async function predictModel(dataUrl, modelKey) {
 export async function runGradCAM(dataUrl, modelKey, options = {}) {
   const fd = new FormData();
   const blob = dataUrlToBlob(dataUrl);
-  fd.append("image", blob, "upload.png");
+  fd.append("image", blob);
   fd.append("image_b64", dataUrl);
   fd.append("model", modelKey === "dog-cat" ? "dog_cat" : "tb");
   if (options.blur) fd.append("blur", options.blur);
@@ -47,7 +47,7 @@ export async function runGradCAM(dataUrl, modelKey, options = {}) {
 export async function runSHAP(dataUrl, modelKey, options = {}) {
   const fd = new FormData();
   const blob = dataUrlToBlob(dataUrl);
-  fd.append("image", blob, "upload.png");
+  fd.append("image", blob);
   fd.append("image_b64", dataUrl);
   fd.append("model", modelKey === "dog-cat" ? "dog_cat" : "tb");
   if (options.blur) fd.append("blur", options.blur);
@@ -62,7 +62,7 @@ export async function generateReport(imageDataUrl, modelKey, extraMetrics = null
     const fd = new FormData();
   
     const blob = dataUrlToBlob(imageDataUrl);
-    fd.append("image", blob, "upload.png");
+    fd.append("image", blob);
   
     fd.append("model", modelKey === "dog-cat" ? "dog_cat" : "tb");
   

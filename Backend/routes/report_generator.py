@@ -281,7 +281,7 @@ def report_generate_endpoint():
             pass
 
         # Local path of PDF
-        local_pdf_path = "/Users/ashishmuley/Desktop/major_project/Major_Project/Backend" + report_url
+        local_pdf_path = "B:\Major-Project\explainable-ai\Backend" + report_url
 
         # Upload to Cloudinary
         cloud_resp = cloudinary.uploader.upload(
